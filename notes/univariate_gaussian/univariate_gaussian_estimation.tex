@@ -1,0 +1,48 @@
+\documentclass[11pt,twoside,a4paper]{article}
+\usepackage{amsmath}
+\usepackage{commath}
+
+\begin{document}
+\section{Uivariate Gaussian distribution}
+  Let $\{x_i\}= \{x_1, x_2, \cdots,x_n\}$ denote $n$ random variates drawn from
+  a univariate Normal distribution parametrised by the unknown variance $\omega$
+  and known mean $\mu = 0$. Let us assume that the a Gaussian noise with known
+  variannce $\zeta$ has been added to the variates yeilding new variates
+  $\{y_i\}= \{y_1, y_2, \cdots,y_n\}$. Using statistical notations we can write
+  \begin{align}
+    \label{eqn_posteriors_signal_and_noise}
+    \Pr \left(\{x_i\} | \omega \right) &= \prod_{i=1}^n
+      \frac{1}{\sqrt{2 \pi \omega}} \exp \left(-\frac{x_i^2}{2 \omega} \right)\\
+    \Pr \left(\{x_i\} | \{y_i\}, \zeta \right) &= \prod_{i=1}^n
+      \frac{1}{\sqrt{2 \pi \zeta}} \exp
+      \left(-\frac{\left(y_i - x_i \right)^2}{2 \zeta} \right)
+  \end{align}
+  Using Bayes theorem the inference about the variance $\omega$ can be written
+  as
+  \begin{align}
+    \label{eqn_posterior_omega_given_noisy_random_variates}
+    \Pr \left(\omega | \{y_i\} \right) \propto
+      \Pr \left(\{y_i\} | \omega \right) \Pr(\omega).
+  \end{align}
+  Assuming a prior distribution $\Pr(\omega) = 1$, we can transfom the problem
+  to the computation of the conditional distribution which is given by
+  \begin{align}
+    \Pr \left(\{y_i\} | \omega \right) &= \prod_{i=1}^n
+      \frac{1}{\sqrt{2 \pi (\zeta + \omega)}} \exp
+      \left(-\frac{y_i^2}{2(\zeta + \omega)} \right), \nonumber \\
+    &= (2 \pi)^{-\frac{n}{2}} \left(\zeta + \omega \right)^{-\frac{n}{2}}
+      \exp \left(-\frac{\sum_{i=1}^n y_i^2}{2 (\zeta + \omega)} \right) .
+  \end{align}
+  The logarithm of the posterior distribution can be written as
+  \begin{align}
+    \psi &= \log \left(\Pr \left(\{y_i\} | \omega \right) \right) \\
+    &= -\frac{n}{2}\log(2 \pi) - \frac{n}{2}\log(\zeta + \omega)
+      -\frac{1}{2} \frac{\sum_{i=1}^n y_i^2}{(\zeta + \omega)}.
+  \end{align}
+  The gradient of the log-posterior with respect to $\omega$ is given by
+  \begin{align}
+    \frac{\partial \psi}{\partial \omega} = -\frac{n}{2 (\zeta + \omega)}
+      -\frac{\sum_{i=1}^n y_i^2}{2 (\zeta + \omega)^2}.
+  \end{align}
+
+\end{document}

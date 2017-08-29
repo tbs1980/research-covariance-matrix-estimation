@@ -33,6 +33,38 @@
     &= (2 \pi)^{-\frac{n}{2}} \left(\zeta + \omega \right)^{-\frac{n}{2}}
       \exp \left(-\frac{\sum_{i=1}^n y_i^2}{2 (\zeta + \omega)} \right) .
   \end{align}
+  This equation represents an inverse-Gamma distribution:
+  \begin{align}
+    f(x | \alpha, \beta) = \frac{\beta^{\alpha}}{\Gamma(\alpha)} x^{\alpha - 1}
+        \exp \left(-\frac{\beta}{x} \right).
+  \end{align}
+  The statistical properties of inverse-Gamma distribution is well known and
+  are shown in the table below.
+  \begin{table}
+    \caption{Statistical properties of inverse-Gamma distribution}
+    \label{tab_statistical_properties_of_inverse_gamma}
+    \begin{center}
+      \begin{tabular}{|c|c|c|}
+        \hline
+        mode & mean $(\alpha > 1)$ & variance $(\alpha > 2)$ \\
+        \hline
+        $\frac{\beta}{\alpha + 1}$ & $\frac{\beta}{\alpha - 1}$ &
+          $\frac{\beta^2}{(\alpha - 1)^2 (\alpha - 2)}$ \\
+        \hline
+      \end{tabular}
+    \end{center}
+  \end{table}
+  We can find the values of $n$ for which the variance of the distribution is
+  defined as shown below:
+  \begin{align}
+    \alpha > 2 \\
+    \frac{n}{2} + 1 > 2 \\
+    \frac{n}{2} > 1 \\
+    \boxed{n > 2}
+  \end{align}
+  This implies that we need at least 2 samples to determine the variance of the
+  estimated and at least one sample to determine the mean.
+
   The logarithm of the posterior distribution can be written as
   \begin{align}
     \psi &= \log \left(\Pr \left(\{y_i\} | \omega \right) \right) \\
@@ -42,7 +74,23 @@
   The gradient of the log-posterior with respect to $\omega$ is given by
   \begin{align}
     \frac{\partial \psi}{\partial \omega} = -\frac{n}{2 (\zeta + \omega)}
-      -\frac{\sum_{i=1}^n y_i^2}{2 (\zeta + \omega)^2}.
+      - \frac{\sum_{i=1}^n y_i^2}{2 (\zeta + \omega)^2}.
+  \end{align}
+  The mode of the distribution can be found by setting gradients equal to zero
+  and solving the resulting equation:
+  \begin{align}
+    \frac{n}{2 (\zeta + \omega)}
+      + \frac{\sum_{i=1}^n y_i^2}{2 (\zeta + \omega)^2} = 0, \\
+    \frac{n}{2} + \frac{\sum_{i=1}^n y_i^2}{2 (\zeta + \omega)} = 0 \\
+    n + \frac{\sum_{i=1}^n y_i^2}{(\zeta + \omega)} = 0 \\
+    n (\zeta + \omega) + \sum_{i=1}^n y_i^2 = 0
+    %\zeta + \omega + \frac{\sum_{i=1}^n y_i^2}{n} = 0 \\
+    %\omega = \frac{\sum_{i=1}^n y_i^2}{n} - \zeta \\
+    %\omega = \bar{y} - \zeta
+  \end{align}
+  Thus mode of the distribution is given by
+  \begin{align}
+    \boxed{\bar{\omega} = \bar{y} - \zeta.}
   \end{align}
 
 \end{document}

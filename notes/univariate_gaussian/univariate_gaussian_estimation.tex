@@ -92,5 +92,36 @@
   \begin{align}
     \boxed{\bar{\omega} = \bar{y} - \zeta.}
   \end{align}
+  As we can see, the mode may have chance of being negative or zero which
+  corresponds to non-physical variance. Hence we cannot treat this as point
+  estimate of the distribution. The question then is what suffices as a
+  ``good'' point estimate?
+
+  From a Bayesian prespective, we haven't really assed the situaton carefully.
+  By choosing uniform prior for $\omega$ we have allowed non-positive values
+  for the variance. However, a sensible prior for the variance should disregard
+  any values less than or equal to zero. According to Jeffery's a reasonable
+  prior distribution for a variable taking only positive values should be
+  a uniform prior on the logarithm of the variable. Let $\eta = \log(\omega)$
+  and hence we can write,
+  \begin{align}
+    \Pr(\eta) = 1.
+  \end{align}
+  The rule of chang of variables says that
+  \begin{align}
+    \Pr(\omega) \dif \omega = \Pr(\eta) \dif \eta.
+  \end{align}
+  Therefore the Jeffreys prior on $\omega$ can be derived as
+  \begin{align}
+    \Pr(\omega) &= \Pr(\eta) \frac {\dif \eta}{\dif \omega}, \\
+    &= \frac{1}{\omega}.
+  \end{align}
+
+  Applying the Jeffreys prior, the logarithm of the posterior distribution
+  becomes
+  \begin{align}
+    \psi  = - \frac{n}{2} \log (2 \pi) - \frac{n}{2} \log (\zeta + \omega)
+      - \frac{1}{2} \frac{\sum_{i=1}^n y_i^2}{(\zeta + \omega)} - \log(\omega).
+  \end{align}
 
 \end{document}

@@ -1,6 +1,7 @@
 \documentclass[11pt,twoside,a4paper]{article}
 \usepackage{amsmath}
 \usepackage{commath}
+\usepackage{graphicx}
 
 \begin{document}
 \section{Uivariate Gaussian distribution}
@@ -123,5 +124,12 @@
     \psi  = - \frac{n}{2} \log (2 \pi) - \frac{n}{2} \log (\zeta + \omega)
       - \frac{1}{2} \frac{\sum_{i=1}^n y_i^2}{(\zeta + \omega)} - \log(\omega).
   \end{align}
+  We compare the two posterior distributions in
+  Figure~\ref{fig_log_post_uniform_jeffreys}
+  \begin{figure}
+    \includegraphics[scale=0.8]{images/log_post_uniform_jeffreys.pdf}
+    \caption{Comparing the log-posterior distributions of $\omega$ with uniform and Jeffreys prior.}
+    \label{fig_log_post_uniform_jeffreys}
+  \end{figure}
 
 \end{document}

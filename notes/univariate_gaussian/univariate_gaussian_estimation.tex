@@ -2,6 +2,8 @@
 \usepackage{amsmath}
 \usepackage{commath}
 \usepackage{graphicx}
+\usepackage{tikz}
+\usetikzlibrary{bayesnet}
 
 \begin{document}
 \section{Uivariate Gaussian distribution}
@@ -137,5 +139,15 @@
   terms of a hierarchical way.
 
 \subsection{Hierarchical modelling}
+  In hierarchical model, one considers a prior of the form
+  \begin{align}
+    \Pr(\zeta + \omega) = \frac{1}{\zeta + \omega}.
+  \end{align}
+  The logaritm of the posterior now has the form
+  \begin{align}
+    \psi  = - \frac{n}{2} \log (2 \pi) - \frac{n}{2} \log (\zeta + \omega)
+      - \frac{1}{2} \frac{\sum_{i=1}^n y_i^2}{(\zeta + \omega)}
+      - \log(\zeta + \omega).
+  \end{align}
 
 \end{document}
